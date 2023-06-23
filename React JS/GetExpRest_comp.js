@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-export default function GetExpREST_Comp(){
+function GetExpREST_Comp(){
     const[emps,setEmps]=useState([]);
     useEffect(()=>{
         fetch("http://localhost:9000/getEmps")
@@ -35,3 +35,4 @@ export default function GetExpREST_Comp(){
         </div>
     )
 }
+export default GetExpREST_Comp;
