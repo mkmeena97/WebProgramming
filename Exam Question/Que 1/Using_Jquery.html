@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+    <script>
+        $(document).ready(function(){
+            $("#text1").keyup(function(){
+                if(this.value.length<=this.maxLength)
+                {
+                    var p=this.maxLength-this.value.length;
+                    $("#msg").text(p+" character remaining");
+                }
+            })
+        })
+    </script>
+</head>
+<body>
+    <div style="background-color:gainsboro;">
+        <form action="">
+            <input type="text" name="text1" id="text1" maxlength="15" />
+        </form>
+        <div>
+            <h3 id="msg"></h3>
+        </div>
+    </div>
+   
+</body>
+</html>
