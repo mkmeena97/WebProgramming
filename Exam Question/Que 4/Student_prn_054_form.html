@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function makeRequest()
+        {
+            ajax=createAjaxObject();
+            if(ajax)
+            ajax.onreadystatechange=updatePage;  
+
+            
+             var url="http://localhost:9000/getDataTable?";
+             //alert(url);   
+
+            
+             ajax.open('POST', url, true);
+             ajax.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+             ajax.send('empid=' + encodeURIComponent(document.f1.empid.value));
+
+        }
+        function updatePage(){
+            if(ajax.readyState==4)
+            {
+                document.getElementById("msg").innerHTML=ajax.responseText;
+            }
+
+        }
+        function createAjaxObject(){
+            try{
+                var ajax=new XMLHttpRequest();
+                return ajax;
+            }catch(e){
+                try{
+                    var ajax=new ActiveXObject("Microsoft.XMLHTTP");
+                    return ajax;
+
+                }catch(e){
+                    alert("AJAX not supported")
+                }
+            }
+
+        }
+    </script>
+</head>
+<body>
+    <div style="background-color: gainsboro ; padding: 20px;">
+    <form action="">
+        Name :
+        <input type="text" id="name" /><br/><br/>
+
+        Birthdate :
+        <input type="date" id="bdate"/><br/><br/>
+
+        Email Id :
+        <input type="email" id="email"/><br/><br/>
+
+        Qualification :
+        <input type="text" id="q"/><br/><br/>
+
+        <input type="submit" onclick="makeRequest()"
+
+    </form>
+</div>
+<div id="msg">
+    <table>
+
+    </table>
+</div>
+</body>
+</html>
