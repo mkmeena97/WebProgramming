@@ -12,13 +12,17 @@
             ajax.onreadystatechange=updatePage;  
 
             
-             var url="http://localhost:9000/getDataTable?";
+             var url="http://localhost:9000/getDataTable";
              //alert(url);   
-
+                var values = 'name=' + encodeURIComponent(document.getElementById("name").value)+
+                '&bdate=' + encodeURIComponent(document.getElementById("bdate").value) + 
+                '&email=' + encodeURIComponent(document.getElementById("email").value) + 
+                '&q=' + encodeURIComponent(document.getElementById("q").value);
             
              ajax.open('POST', url, true);
              ajax.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-             ajax.send('empid=' + encodeURIComponent(document.f1.empid.value));
+             ajax.send(values);
+            
 
         }
         function updatePage(){
@@ -47,27 +51,24 @@
 </head>
 <body>
     <div style="background-color: gainsboro ; padding: 20px;">
-    <form action="">
+    <form action="" id="f1">
         Name :
-        <input type="text" id="name" /><br/><br/>
+        <input type="text" name="name" id="name" /><br/><br/>
 
         Birthdate :
-        <input type="date" id="bdate"/><br/><br/>
+        <input type="date" name="bdate" id="bdate"/><br/><br/>
 
         Email Id :
-        <input type="email" id="email"/><br/><br/>
+        <input type="email" name="email" id="email"/><br/><br/>
 
         Qualification :
-        <input type="text" id="q"/><br/><br/>
+        <input type="text" name="q" id="q"/><br/><br/>
 
         <input type="submit" onclick="makeRequest()"
 
     </form>
 </div>
 <div id="msg">
-    <table>
-
-    </table>
 </div>
 </body>
 </html>
